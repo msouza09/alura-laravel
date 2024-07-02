@@ -14,6 +14,6 @@ class SeriesController extends Controller
             'La casa de papel',
         ];
 
-    return view('listar-series', compact('series'));
+    return view('listar-series')->with('series', $series);
     }
 }
