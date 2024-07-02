@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/series', [App\Http\Controllers\SeriesController::class, 'listarSeries']);
+Route::get('/series', [App\Http\Controllers\SeriesController::class, 'index']);
