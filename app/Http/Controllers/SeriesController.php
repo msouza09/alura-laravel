@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        return redirect('https://www.google.com/');
         $series = [
             'Peaky Blinders',
             'Breaking Bad',
@@ -20,6 +21,6 @@ class SeriesController extends Controller
         }
         $html .= '</ul>';
 
-        echo $html;
+        return $html;
     }
 }
