@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Serie;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
     public function index(Request $request)
     {
-        $series = [
-            'Peaky Blinders',
-            'Breaking Bad',
-            'La casa de papel',
-        ];
+        $series = Serie::query()->orderBy('nome')->get(['id', 'nome']);
 
         return view('series.index')->with('series', $series);
     }
@@ -21,4 +18,13 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-   }
+    public function store(Request $request)
+    {
+        $nomeSerie = $request->input('nome');
+        $serie = New Serie();
+        $serie->nome = $nomeSerie;
+        $serie->save();
+
+        return redirect('/series');
+    }
+}
