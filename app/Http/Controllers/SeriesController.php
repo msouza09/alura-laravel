@@ -27,4 +27,16 @@ class SeriesController extends Controller
 
         return redirect('/series');
     }
+
+    public function destroy($id) {
+        $serie = Serie::find($id);
+
+        if (!$serie) {
+            return redirect()->route('series.index')->with('error', 'Série não encontrada.');
+        }
+
+        $serie->delete();
+
+        return redirect()->route('series.index')->with('sucess', 'Série excluida com sucesso.');
+    }
 }
