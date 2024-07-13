@@ -9,10 +9,10 @@ class SeriesController extends Controller
 {
     public function index(Request $request)
     {
-        $series = Serie::query()->orderBy('nome')->get(['id', 'nome']);
-
-        return view('series.index')->with('series', $series);
+        $series = Serie::orderBy('nome')->get(['id', 'nome']);
+        return view('series.index', ['series' => $series]);
     }
+
 
     public function create(){
         return view('series.create');
