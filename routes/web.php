@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/series', [App\Http\Controllers\SeriesController::class, 'index']);
+Route::get('/series', [SeriesController::class, 'index'])->name('series.index');
 
-Route::get('/series/criar', [App\Http\Controllers\SeriesController::class, 'create']);
+Route::get('/series/criar', [SeriesController::class, 'create'])->name('series.create');
 
-Route::post('/series/salvar', [App\Http\Controllers\SeriesController::class, 'store']);
+Route::post('/series/salvar', [SeriesController::class, 'store'])->name('series.store');
