@@ -48,7 +48,7 @@ class SeriesController extends Controller
         $serie->nome = $request->input('nome');
         $serie->save();
 
-        return redirect('/series')->with('success', 'Série atualizada com sucesso!');
+        return redirect()->route('series.index')->with('success', 'Série atualizada com sucesso!');
     }
 
     public function destroy($id) {
