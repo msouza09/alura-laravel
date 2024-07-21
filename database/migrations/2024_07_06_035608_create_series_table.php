@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('series', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 128);
+            $table->string('nome')->nullable();
+            $table->string('genero')->nullable();
+            $table->integer('numberTemp')->nullable();
+            $table->string('descricao')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +26,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('series');
+        Schema::table('series', function (Blueprint $table) {
+            $table->dropColumn(['nome', 'genero', 'numberTemp', 'descricao']);
+        });
     }
 };
