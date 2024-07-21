@@ -22,11 +22,22 @@ class SeriesController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255',
+            'genero' => 'required|string|max:255',
+            'numberTemp' => 'required|integer|max:255',
+            'descricao' => 'required|string|max:255'
+
         ]);
 
         $nomeSerie = $request->input('nome');
+        $genero = $request->input('genero');
+        $numberTemp = $request->input('numberTemp');
+        $descricao = $request->input('descricao');
+
         $serie = new Serie();
         $serie->nome = $nomeSerie;
+        $serie->genero = $genero;
+        $serie->numberTemp = $numberTemp;
+        $serie->descricao = $descricao;
         $serie->save();
 
         return redirect('/series')->with('success', 'Série adicionada com sucesso!');
@@ -42,10 +53,16 @@ class SeriesController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255',
+            'genero' => 'required|string|max:255',
+            'numberTemp' => 'required|integer|max:255',
+            'descricao' => 'required|string|max:255'
         ]);
 
         $serie = Serie::findOrFail($id);
         $serie->nome = $request->input('nome');
+        $serie->genero = $request->input('genero');
+        $serie->numberTemp = $request->input('numberTemp');
+        $serie->descricao = $request->input('descricao');
         $serie->save();
 
         return redirect()->route('series.index')->with('success', 'Série atualizada com sucesso!');
